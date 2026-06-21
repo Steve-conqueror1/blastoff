@@ -28,12 +28,13 @@ There is no test setup in this project.
 
 ## Architecture notes
 
-This is an **early-stage SEO marketing site** — most of the scaffolding exists but the pages do not yet. When adding features, keep these in mind:
+This is an **early-stage SEO marketing site**. All 22 routes from AGENTS.md's "MUST HAVE PAGES" list are scaffolded under `app/` but are **content stubs**: each `page.tsx` exports SEO `metadata` and returns a single `<div>PageName</div>`. The work ahead is filling in real content + shared layout (header/nav/footer), not creating routes. When adding features, keep these in mind:
 
-- **App Router, server components by default.** `app/page.tsx` (home) currently injects `LocalBusiness` JSON-LD via a `<script type="application/ld+json">` and is otherwise an empty shell. Replicate the JSON-LD pattern on other pages where relevant.
-- **SEO is the core requirement.** Per-page metadata uses the Next.js `metadata` export; the root template/title and default OpenGraph live in `app/layout.tsx`. AGENTS.md lists the exact pages that must exist (`/services/*`, `/service-areas/*`, `/blog/*`) and the keywords each should target naturally.
-- **Sitemap and robots are App Router metadata routes**, not static files: `app/sitemap.ts` and `app/robots.ts`. `app/sitemap.ts` hardcodes the route list — **add new pages here when you create them** (note `next-sitemap` is installed but currently unused; the hand-written route is what ships).
-- **Blog is file-based, no database** (AGENTS.md). Build blog posts from local files/MDX, not a CMS or DB.
+- **App Router, server components by default.** `app/page.tsx` (home) injects `LocalBusiness` JSON-LD via a `<script type="application/ld+json">` (with `<` escaped). Replicate this JSON-LD pattern on other pages where relevant.
+- **SEO is the core requirement, and every page already follows a pattern:** an `export const metadata: Metadata` with `title`, `description`, and `alternates.canonical` (relative path; `metadataBase` in `app/layout.tsx` makes it absolute). Service detail pages also carry a `keywords` array drawn from AGENTS.md. The root title `template`/`default` and default OpenGraph/Twitter live in `app/layout.tsx` — per-page titles fill the `%s`.
+- **Sitemap and robots are App Router metadata routes**, not static files: `app/sitemap.ts` and `app/robots.ts`. `app/sitemap.ts` is the **single source of truth for the URL structure** — a typed `routes` array with per-route `priority`/`changeFrequency`, exporting `baseUrl`. Keep it in sync: only list URLs that resolve (200), and add new pages here when you create them. (`next-sitemap` is installed but unused; the hand-written route is what ships.)
+- **Blog is file-based, no database** (AGENTS.md). Build blog posts from local files/MDX, not a CMS or DB. The 5 post routes currently live as individual `app/blog/<slug>/page.tsx` stubs.
+- **Contact form is not yet implemented.** When building it, wire **Resend** + **@react-email/components** to email `rizza@blastoffsafety.com` with the exact subjects/auto-reply specified in AGENTS.md "CONTACT FORM", validating input with **zod**.
 - **Fonts:** Oswald for headings (`h1`, `h2`), Inter for body — loaded via `next/font` in `app/layout.tsx` and exposed as `--font-oswald` / `--font-inter`.
 
 ## Theming

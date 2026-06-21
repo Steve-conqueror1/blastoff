@@ -278,3 +278,7 @@ Body: Inter
 ### BLOGS
 
 - File-based blog (NO database)
+
+### MOBILE RESPONSIVENESS
+
+- Mobile Responsiveness is a top priority
