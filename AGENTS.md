@@ -274,3 +274,7 @@ Accent: #FBBF24
 
 Headline: Oswald
 Body: Inter
+
+### BLOGS
+
+- File-based blog (NO database)

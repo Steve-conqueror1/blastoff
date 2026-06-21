@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "Blast Off Kitchen Exhaust Cleaning & Fire Protection",
     description:
       "Kitchen exhaust cleaning and fire protection services across Alberta.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

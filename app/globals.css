@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette (see AGENTS.md) */
+  --color-primary: #d32f2f;
+  --color-dark: #111827;
+  --color-accent: #fbbf24;
+
+  --background: #f9fafb;
+  --foreground: #111827;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--color-primary);
+  --color-dark: var(--color-dark);
+  --color-accent: var(--color-accent);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-oswald);
 }
 
 body {
