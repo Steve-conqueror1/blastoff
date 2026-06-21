@@ -12,10 +12,16 @@ const contactSchema = z.object({
 
 export type ContactFormData = z.infer<typeof contactSchema>;
 
+export interface ContactState {
+  success: boolean;
+  error: string | null;
+  errors?: Record<string, string[]>;
+}
+
 export async function submitContactForm(
-  prevState: { success: boolean; error: string | null; errors?: Record<string, string[]> },
+  prevState: ContactState,
   formData: FormData
-) {
+): Promise<ContactState> {
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
@@ -23,6 +29,7 @@ export async function submitContactForm(
     return {
       success: false,
       error: "Server configuration error. Please try again later.",
+      errors: undefined,
     };
   }
 
@@ -41,6 +48,7 @@ export async function submitContactForm(
     const errorMap = parseResult.error.flatten().fieldErrors;
     return {
       success: false,
+      error: null,
       errors: errorMap,
     };
   }
@@ -90,6 +98,7 @@ export async function submitContactForm(
       return {
         success: false,
         error: "Failed to send message. Please contact us directly by phone or email.",
+        errors: undefined,
       };
     }
 
@@ -132,12 +141,14 @@ export async function submitContactForm(
     return {
       success: true,
       error: null,
+      errors: undefined,
     };
   } catch (error: unknown) {
     console.error("Contact Form Server Action Exception:", error);
     return {
       success: false,
       error: "An unexpected error occurred. Please try again or call us at 780-918-2076.",
+      errors: undefined,
     };
   }
 }
