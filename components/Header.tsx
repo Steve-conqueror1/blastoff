@@ -20,16 +20,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-20 sm:h-24 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="Blast Off Logo"
-                width={160}
-                height={55}
-                className="h-12 w-auto object-contain"
+                width={220}
+                height={75}
+                className="h-14 sm:h-18 w-auto object-contain"
                 priority
               />
             </Link>
@@ -94,7 +94,11 @@ export default function Header() {
                   strokeWidth="1.5"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               ) : (
                 <svg
@@ -104,7 +108,11 @@ export default function Header() {
                   strokeWidth="1.5"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
                 </svg>
               )}
             </button>
