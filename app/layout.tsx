@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter = Inter({
@@ -75,8 +78,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${oswald.variable} ${inter.variable} h-full`}>
+      <body className="min-h-full flex flex-col antialiased">
+        <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

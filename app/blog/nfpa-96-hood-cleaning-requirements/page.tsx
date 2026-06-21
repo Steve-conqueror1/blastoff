@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
+import BlogPostLayout from "@/components/BlogPostLayout";
+
+const slug = "nfpa-96-hood-cleaning-requirements";
 
 export const metadata: Metadata = {
-  title: "NFPA 96 Hood Cleaning Requirements Explained",
+  title: "NFPA 96 Hood Cleaning Requirements | Blast Off",
   description:
-    "A plain-language guide to NFPA 96 hood cleaning requirements for commercial kitchens, including inspection intervals and compliance.",
-  alternates: { canonical: "/blog/nfpa-96-hood-cleaning-requirements" },
+    "Understand the core NFPA 96 standards for commercial kitchen fire safety, grease duct access, and professional exhaust cleaning.",
+  alternates: {
+    canonical: `/blog/${slug}`,
+  },
 };
 
-export default function Post() {
-  return <div>NFPA 96 Hood Cleaning Requirements</div>;
+export default function PostPage() {
+  return <BlogPostLayout slug={slug} />;
 }

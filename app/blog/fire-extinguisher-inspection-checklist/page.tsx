@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
+import BlogPostLayout from "@/components/BlogPostLayout";
+
+const slug = "fire-extinguisher-inspection-checklist";
 
 export const metadata: Metadata = {
-  title: "Fire Extinguisher Inspection Checklist",
+  title: "Fire Extinguisher Inspection Checklist | Blast Off",
   description:
-    "A practical fire extinguisher inspection checklist for commercial businesses to stay compliant and safe between professional services.",
-  alternates: { canonical: "/blog/fire-extinguisher-inspection-checklist" },
+    "A comprehensive guide on fire extinguisher inspections, monthly checklists, and annual recharge and certification requirements for commercial facilities.",
+  alternates: {
+    canonical: `/blog/${slug}`,
+  },
 };
 
-export default function Post() {
-  return <div>Fire Extinguisher Inspection Checklist</div>;
+export default function PostPage() {
+  return <BlogPostLayout slug={slug} />;
 }
