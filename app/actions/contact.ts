@@ -20,7 +20,7 @@ export interface ContactState {
 
 export async function submitContactForm(
   prevState: ContactState,
-  formData: FormData
+  formData: FormData,
 ): Promise<ContactState> {
   const apiKey = process.env.RESEND_API_KEY;
 
@@ -34,6 +34,14 @@ export async function submitContactForm(
   }
 
   const resend = new Resend(apiKey);
+
+  // Until a domain is verified in Resend, this MUST be the sandbox sender
+  // (onboarding@resend.dev), which can only deliver to your own account email.
+  // Once you verify a domain, set RESEND_FROM_EMAIL to e.g.
+  // "Blast Off Website <noreply@blastoffkitchenandfireservices.com>".
+  const fromEmail =
+    process.env.RESEND_FROM_EMAIL ||
+    "Blast Off Website <onboarding@resend.dev>";
 
   const rawData = {
     name: formData.get("name") as string,
@@ -59,8 +67,9 @@ export async function submitContactForm(
     // 1. Send lead email to business owner (rizza@blastoffsafety.com)
     // Note: If domain is not verified, Resend requires sending from 'onboarding@resend.dev'
     const leadEmail = await resend.emails.send({
-      from: "Blast Off Website <onboarding@resend.dev>",
+      from: fromEmail,
       to: "rizza@blastoffsafety.com",
+      replyTo: email,
       subject: "New Website Quote Request - Blast Off Website",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
@@ -97,14 +106,15 @@ export async function submitContactForm(
       console.error("Resend Lead Email Error:", leadEmail.error);
       return {
         success: false,
-        error: "Failed to send message. Please contact us directly by phone or email.",
+        error:
+          "Failed to send message. Please contact us directly by phone or email.",
         errors: undefined,
       };
     }
 
     // 2. Send auto-reply confirmation email to customer
     const autoReply = await resend.emails.send({
-      from: "Blast Off Kitchen & Fire <onboarding@resend.dev>",
+      from: fromEmail,
       to: email,
       subject: "We received your request",
       html: `
@@ -135,7 +145,10 @@ export async function submitContactForm(
     });
 
     if (autoReply.error) {
-      console.warn("Resend Auto-Reply Email Error (not critical):", autoReply.error);
+      console.warn(
+        "Resend Auto-Reply Email Error (not critical):",
+        autoReply.error,
+      );
     }
 
     return {
@@ -147,7 +160,8 @@ export async function submitContactForm(
     console.error("Contact Form Server Action Exception:", error);
     return {
       success: false,
-      error: "An unexpected error occurred. Please try again or call us at 780-918-2076.",
+      error:
+        "An unexpected error occurred. Please try again or call us at 780-918-2076.",
       errors: undefined,
     };
   }
