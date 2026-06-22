@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-export const baseUrl = "https://blastoffkitchenandfireservices.com";
+export const baseUrl = "https://www.blastoffkitchenandfireservices.com";
 
 /**
  * Single source of truth for the site's URL structure (mirrors the

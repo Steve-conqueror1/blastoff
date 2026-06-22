@@ -18,7 +18,7 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://blastoffkitchenandfireservices.com"),
+  metadataBase: new URL("https://www.blastoffkitchenandfireservices.com"),
   title: {
     default:
       "Blast Off Kitchen Exhaust Cleaning & Fire Protection | Red Deer, Alberta",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Blast Off Kitchen Exhaust Cleaning & Fire Protection",
     description:
       "Trusted commercial kitchen exhaust cleaning and fire protection services in Alberta.",
-    url: "https://blastoffkitchenandfireservices.com",
+    url: "https://www.blastoffkitchenandfireservices.com",
     siteName: "Blast Off Kitchen Exhaust Cleaning & Fire Protection",
     locale: "en_CA",
     type: "website",

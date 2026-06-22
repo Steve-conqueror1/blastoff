@@ -8,7 +8,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Blast Off Kitchen Exhaust Cleaning & Fire Protection",
-    url: "https://blastoffkitchenandfireservices.com",
+    url: "https://www.blastoffkitchenandfireservices.com",
     telephone: "780-918-2076",
     email: "rizza@blastoffsafety.com",
     address: {
@@ -31,7 +31,7 @@ export default function Home() {
       "Sylvan Lake",
     ],
     priceRange: "$$",
-    image: "https://blastoffkitchenandfireservices.com/logo.png",
+    image: "https://www.blastoffkitchenandfireservices.com/logo.png",
   };
 
   const coreServices = [

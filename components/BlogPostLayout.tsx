@@ -16,20 +16,20 @@ export default function BlogPostLayout({ slug }: { slug: string }) {
     "@type": "Article",
     headline: post.title,
     description: post.description,
-    image: `https://blastoffkitchenandfireservices.com${post.image}`,
+    image: `https://www.blastoffkitchenandfireservices.com${post.image}`,
     datePublished: post.date,
     dateModified: post.date,
     author: {
       "@type": "Organization",
       name: "Blast Off Kitchen Exhaust Cleaning & Fire Protection",
-      url: "https://blastoffkitchenandfireservices.com",
+      url: "https://www.blastoffkitchenandfireservices.com",
     },
     publisher: {
       "@type": "Organization",
       name: "Blast Off Kitchen Exhaust Cleaning & Fire Protection",
       logo: {
         "@type": "ImageObject",
-        url: "https://blastoffkitchenandfireservices.com/logo.png",
+        url: "https://www.blastoffkitchenandfireservices.com/logo.png",
       },
     },
   };

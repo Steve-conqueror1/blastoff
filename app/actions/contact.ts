@@ -138,7 +138,7 @@ export async function submitContactForm(
             <strong>Blast Off Kitchen Exhaust Cleaning & Fire Protection</strong><br />
             Unit #6, 4980 76 Street, Red Deer, AB T4P 2J8<br />
             Email: <a href="mailto:rizza@blastoffsafety.com" style="color: #D32F2F;">rizza@blastoffsafety.com</a><br />
-            Web: <a href="https://blastoffkitchenandfireservices.com" style="color: #D32F2F;">blastoffkitchenandfireservices.com</a>
+            Web: <a href="https://www.blastoffkitchenandfireservices.com" style="color: #D32F2F;">blastoffkitchenandfireservices.com</a>
           </div>
         </div>
       `,

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
 
-    sitemap: "https://blastoffkitchenandfireservices.com/sitemap.xml",
+    sitemap: "https://www.blastoffkitchenandfireservices.com/sitemap.xml",
   };
 }
